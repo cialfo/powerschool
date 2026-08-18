@@ -32,7 +32,7 @@ class Powerschool
       @authenticated = false
       if ! @api_credentials['access_token']
         headers = {
-          'ContentType' => 'application/x-www-form-urlencoded;charset=UTF-8',
+          'Content-Type' => 'application/x-www-form-urlencoded;charset=UTF-8',
           'Accept' => 'application/json',
           'Authorization' => 'Basic ' + Base64.encode64([self.api_credentials['id'], self.api_credentials['secret']].join(':')).gsub(/\n/, '') }
         response = HTTParty.post(self.class.base_uri + AUTH_ENDPOINT, {headers: headers, body: 'grant_type=client_credentials'})
